@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clã El Shaddai – Plano de Leitura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:    #E8721A;
+      --orange-lt: #F59A45;
+      --gold:      #C9831A;
+      --dark:      #1A1208;
+      --dark-card: #221A0D;
+      --dark-mid:  #2E2010;
+      --cream:     #F5E8CC;
+      --cream-dim: #D4B882;
+      --white:     #FFFDF7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'EB Garamond', Georgia, serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem 5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 30%, rgba(232,114,26,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(26,18,8,0.95) 0%, transparent 60%),
+        linear-gradient(175deg, #0D0802 0%, #1F1208 40%, #2A1A0A 70%, #0D0802 100%);
+      z-index: 0;
+    }
+
+    /* subtle cross motif */
+    .hero::after {
+      content: '✝';
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(6rem, 14vw, 11rem);
+      color: rgba(232,114,26,0.06);
+      z-index: 0;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    /* Shield logo */
+    .shield {
+      width: clamp(80px, 16vw, 120px);
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 18px rgba(232,114,26,0.5));
+    }
+
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.7rem, 2vw, 0.9rem);
+      letter-spacing: 0.35em;
+      color: var(--orange-lt);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .clan-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.8rem, 9vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--orange);
+      text-shadow:
+        0 0 30px rgba(232,114,26,0.4),
+        0 4px 8px rgba(0,0,0,0.6);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+
+    .subtitle-block {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle-line { height: 1px; width: clamp(30px,6vw,60px); background: var(--orange); opacity: 0.6; }
+
+    .plan-label {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.75rem, 2vw, 1rem);
+      letter-spacing: 0.3em;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+    }
+
+    .books-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--orange-lt);
+      font-style: italic;
+      margin-bottom: 1.4rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1.6rem;
+    }
+    .pill {
+      background: var(--orange);
+      color: var(--dark);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.65rem, 1.8vw, 0.78rem);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35em 1em;
+      border-radius: 999px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.95rem, 2.4vw, 1.2rem);
+      color: var(--cream-dim);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    .hero-tagline em { color: var(--orange-lt); font-style: normal; font-weight: 600; }
+
+    .scroll-hint {
+      margin-top: 3rem;
+      color: var(--orange);
+      font-size: 1.4rem;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(8px); }
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 4rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-align: center;
+      margin-bottom: 0.4rem;
+    }
+    .section-rule {
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--orange);
+      margin: 0 auto 2.5rem;
+      border-radius: 2px;
+    }
+
+    /* ── JOURNEY DIVIDER ── */
+    .journey-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 auto 3rem;
+      max-width: 700px;
+    }
+    .journey-divider hr { flex: 1; border: none; border-top: 1px solid rgba(232,114,26,0.25); }
+    .journey-divider .cross-icon {
+      font-size: 1.4rem;
+      color: var(--orange);
+      opacity: 0.7;
+    }
+
+    /* ── DAY CARDS GRID ── */
+    .days-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 540px) {
+      .days-grid { grid-template-columns: 1fr; }
+    }
+
+    .day-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(232,114,26,0.18);
+      border-radius: 14px;
+      padding: 1.2rem 1.3rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+    }
+    .day-card:hover {
+      border-color: rgba(232,114,26,0.55);
+      box-shadow: 0 6px 28px rgba(232,114,26,0.14);
+      transform: translateY(-2px);
+    }
+    .day-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(to bottom, var(--orange), var(--gold));
+      border-radius: 3px 0 0 3px;
+    }
+
+    .day-num {
+      min-width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: var(--dark);
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(232,114,26,0.4);
+    }
+
+    .day-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      min-width: 28px;
+      text-align: center;
+      color: var(--orange-lt);
+      flex-shrink: 0;
+    }
+
+    .day-content { flex: 1; }
+
+    .day-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange-lt);
+      margin-bottom: 0.15rem;
+    }
+
+    .day-chapter {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .day-theme {
+      font-size: clamp(0.82rem, 1.8vw, 0.92rem);
+      color: var(--cream-dim);
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    /* phase header */
+    .phase-header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1rem 0 0.2rem;
+    }
+    .phase-header hr { flex: 1; border: none; border-top: 1px solid rgba(232,114,26,0.2); }
+    .phase-badge {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid rgba(232,114,26,0.4);
+      border-radius: 999px;
+      padding: 0.2em 0.9em;
+      white-space: nowrap;
+    }
+
+    /* ── VERSE BANNER ── */
+    .verse-banner {
+      background: linear-gradient(135deg, #2A1800 0%, #1A0E00 50%, #241400 100%);
+      border-top: 1px solid rgba(232,114,26,0.2);
+      border-bottom: 1px solid rgba(232,114,26,0.2);
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .verse-banner::before {
+      content: '❝';
+      position: absolute;
+      top: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8rem;
+      color: rgba(232,114,26,0.07);
+      pointer-events: none;
+      line-height: 1;
+    }
+    .verse-text {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-style: italic;
+      color: var(--cream);
+      max-width: 620px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.6;
+      position: relative;
+    }
+    .verse-ref {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0D0802;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(232,114,26,0.12);
+    }
+    .footer-motto {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-style: italic;
+      color: var(--orange-lt);
+      margin-bottom: 0.5rem;
+    }
+    .footer-cta {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .footer-brand {
+      margin-top: 2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── RESPONSIVE HERO TWEAKS ── */
+    @media (max-width: 480px) {
+      .hero { padding: 2rem 1rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Shield SVG logo -->
+    <svg class="shield" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2E2010"/>
+          <stop offset="100%" stop-color="#1A1208"/>
+        </linearGradient>
+      </defs>
+      <path d="M60 4 L114 28 L114 78 Q114 118 60 136 Q6 118 6 78 L6 28 Z" fill="url(#sg)" stroke="#E8721A" stroke-width="3"/>
+      <!-- lion silhouette (simplified) -->
+      <text x="60" y="80" text-anchor="middle" font-size="52" fill="#E8721A" font-family="serif">🦁</text>
+      <text x="60" y="108" text-anchor="middle" font-size="8" fill="#C9831A" font-family="Cinzel,serif" font-weight="700" letter-spacing="2">EL SHADDAI</text>
+    </svg>
+
+    <p class="eyebrow">Clã</p>
+    <h1 class="clan-name">El Shaddai</h1>
+
+    <div class="subtitle-block">
+      <span class="subtitle-line"></span>
+      <span class="plan-label">Plano de Leitura</span>
+      <span class="subtitle-line"></span>
+    </div>
+
+    <h2 class="books-title">Filipenses &amp; Efésios</h2>
+
+    <div class="pills">
+      <span class="pill">10 dias</span>
+      <span class="pill">10 capítulos</span>
+      <span class="pill">Uma jornada de fé e união</span>
+    </div>
+
+    <p class="hero-tagline">
+      Juntos, vamos crescer na Palavra,<br/>
+      fortalecer nossa <em>fé</em> e refletir o <em>amor</em> de Cristo<br/>
+      em tudo o que fazemos.
+    </p>
+
+    <div class="scroll-hint">↓</div>
+  </section>
+
+  <!-- DAYS SECTION -->
+  <section class="section">
+    <h3 class="section-title">A Jornada</h3>
+    <span class="section-rule"></span>
+
+    <div class="days-grid">
+
+      <!-- PHASE 1 – Filipenses -->
+      <div class="phase-header">
+        <hr/>
+        <span class="phase-badge">📖 Filipenses — Dias 1 a 4</span>
+        <hr/>
+      </div>
+
+      <!-- Day 1 -->
+      <div class="day-card">
+        <div class="day-num">1</div>
+        <div class="day-icon">📖</div>
+        <div class="day-content">
+          <p class="day-label">Dia 1</p>
+          <p class="day-chapter">Filipenses 1</p>
+          <p class="day-theme">Viver o evangelho com alegria</p>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-card">
+        <div class="day-num">2</div>
+        <div class="day-icon">🤝</div>
+        <div class="day-content">
+          <p class="day-label">Dia 2</p>
+          <p class="day-chapter">Filipenses 2</p>
+          <p class="day-theme">A atitude de Cristo em nós</p>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="day-card">
+        <div class="day-num">3</div>
+        <div class="day-icon">👑</div>
+        <div class="day-content">
+          <p class="day-label">Dia 3</p>
+          <p class="day-chapter">Filipenses 3</p>
+          <p class="day-theme">Rumo ao alvo: conhecer a Cristo</p>
+        </div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="day-card">
+        <div class="day-num">4</div>
+        <div class="day-icon">🕊️</div>
+        <div class="day-content">
+          <p class="day-label">Dia 4</p>
+          <p class="day-chapter">Filipenses 4</p>
+          <p class="day-theme">Paz que guarda o coração</p>
+        </div>
+      </div>
+
+      <!-- PHASE 2 – Efésios -->
+      <div class="phase-header">
+        <hr/>
+        <span class="phase-badge">✝️ Efésios — Dias 5 a 10</span>
+        <hr/>
+      </div>
+
+      <!-- Day 5 -->
+      <div class="day-card">
+        <div class="day-num">5</div>
+        <div class="day-icon">🙏</div>
+        <div class="day-content">
+          <p class="day-label">Dia 5</p>
+          <p class="day-chapter">Efésios 1</p>
+          <p class="day-theme">Escolhidos e abençoados em Cristo</p>
+        </div>
+      </div>
+
+      <!-- Day 6 -->
+      <div class="day-card">
+        <div class="day-num">6</div>
+        <div class="day-icon">✝️</div>
+        <div class="day-content">
+          <p class="day-label">Dia 6</p>
+          <p class="day-chapter">Efésios 2</p>
+          <p class="day-theme">De mortos para uma nova vida</p>
+        </div>
+      </div>
+
+      <!-- Day 7 -->
+      <div class="day-card">
+        <div class="day-num">7</div>
+        <div class="day-icon">🌟</div>
+        <div class="day-content">
+          <p class="day-label">Dia 7</p>
+          <p class="day-chapter">Efésios 3</p>
+          <p class="day-theme">O mistério revelado: Cristo em nós</p>
+        </div>
+      </div>
+
+      <!-- Day 8 -->
+      <div class="day-card">
+        <div class="day-num">8</div>
+        <div class="day-icon">❤️</div>
+        <div class="day-content">
+          <p class="day-label">Dia 8</p>
+          <p class="day-chapter">Efésios 4</p>
+          <p class="day-theme">Unidade, maturidade e amor</p>
+        </div>
+      </div>
+
+      <!-- Day 9 -->
+      <div class="day-card">
+        <div class="day-num">9</div>
+        <div class="day-icon">💡</div>
+        <div class="day-content">
+          <p class="day-label">Dia 9</p>
+          <p class="day-chapter">Efésios 5</p>
+          <p class="day-theme">Vivendo como filhos da luz</p>
+        </div>
+      </div>
+
+      <!-- Day 10 -->
+      <div class="day-card">
+        <div class="day-num">10</div>
+        <div class="day-icon">🛡️</div>
+        <div class="day-content">
+          <p class="day-label">Dia 10</p>
+          <p class="day-chapter">Efésios 6</p>
+          <p class="day-theme">Fortalecidos com a armadura de Deus</p>
+        </div>
+      </div>
+
+    </div><!-- /days-grid -->
+  </section>
+
+  <!-- VERSE BANNER -->
+  <div class="verse-banner">
+    <p class="verse-text">
+      "Cresçamos em tudo naquele que é a cabeça, Cristo."
+    </p>
+    <p class="verse-ref">— Efésios 4:15</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-motto">Mais que uma leitura, uma jornada que transforma.</p>
+    <p class="footer-cta">Unidos em Cristo, crescendo na fé!</p>
+    <p class="footer-brand">Clã El Shaddai &nbsp;•&nbsp; Plano de Leitura Bíblica</p>
+  </footer>
+
+</body>
+</html>
